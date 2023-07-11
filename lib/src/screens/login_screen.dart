@@ -18,7 +18,7 @@ class LoginScreen extends StatelessWidget {
           Container(
             padding: const EdgeInsets.only(bottom: 25.0),
           ),
-          submitButton(),
+          submitButton(bloc),
         ],
       ),
     );
@@ -57,10 +57,15 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  Widget submitButton() {
-    return ElevatedButton(
-      onPressed: () {},
-      child: const Text('Login'),
+  Widget submitButton(Bloc bloc) {
+    return StreamBuilder(
+      stream: bloc.submitValid,
+      builder: (context, snapshot) {
+        return ElevatedButton(
+          onPressed: () {},
+          child: const Text('Login'),
+        );
+      },
     );
   }
 }
